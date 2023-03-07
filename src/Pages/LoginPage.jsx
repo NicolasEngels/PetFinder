@@ -15,11 +15,10 @@ function LoginPage () {
  
  const onSubmit = async (data = {}) => {
   axios
-    .post("/user/login", data)
+    .post("https://petfinder.herokuapp.com/login", data)
     .then((response) => {
       console.log(response);
       const userId = response.data.id;
-      console.log(userId);
       localStorage.setItem("user_id", userId);
       auth.login(response.data.id); // login the user
       navigate(redirectPath); // redirect to the requested page after login
@@ -27,13 +26,14 @@ function LoginPage () {
     .catch((error) => {
       console.log(error);
     });
-};
+  };
+
   return (
     <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="email"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email"{...register("email")}/>
-            <input type="password"  id="exampleInputPassword1" placeholder="Password" {...register("password")}/>
-            <button type="submit" >Login</button>
+            <input type="email" placeholder="Email"{...register("email")}/>
+            <input type="password" placeholder="Password" {...register("password")}/>
+            <button type="submit">Login</button>
         </form>
     </div>
    
