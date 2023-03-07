@@ -6,19 +6,13 @@ function SignUp() {
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.path || '/';
-  const inputRefUsername = useRef();
   const inputRefEmail = useRef();
   const inputRefPassword = useRef();
-  const inputRefLastName = useRef();
   const inputRefConfPassword = useRef();
-  const inputRefFirstName =useRef();
 
   const onSubmit =  (e) => {
     e.preventDefault();
     const data = {
-      username: inputRefUsername.current.value,
-      last_name: inputRefLastName.current.value,
-      first_name: inputRefFirstName.current.value,
       email: inputRefEmail.current.value,
       password: inputRefPassword.current.value,
       confirm_password: inputRefConfPassword.current.value,
@@ -26,7 +20,7 @@ function SignUp() {
     console.log(data)
    
     axios
-    .post("/user/register", data)
+    .post( "https://petfinder.herokuapp.com/register", data)
      .then((response) => {
         console.log(response);
         navigate(redirectPath, { replace: true });
@@ -41,15 +35,6 @@ function SignUp() {
     <div > 
        <form onSubmit={onSubmit}>
           <h2>Sign Up</h2>
-
-          <label htmlFor="typeText"></label>
-          <input ref={inputRefUsername}  type="text"  placeholder="User Name"></input>
-
-          <label  htmlFor="typeText"></label>
-          <input ref={inputRefFirstName} type="text"  placeholder="First Name"></input>
-                   
-          <label htmlFor="typeText"></label>
-          <input ref={inputRefLastName} type="text" placeholder="Last Name"></input>
 
           <label htmlFor="typeText"></label>
           <input ref={inputRefEmail} name="email"  type="email" placeholder="Enter your email" />

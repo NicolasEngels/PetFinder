@@ -1,16 +1,20 @@
 import {useAuth} from '../Components/Auth'
-import {useNavigate} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { useState, useEffect} from "react"
+import { useForm } from 'react-hook-form';
 
-const ProfilePageLayout = () => {
-   const auth = useAuth()
-   const navigate=useNavigate()
-   const [infos, setInfos] = useState([]);
+const ProfilePage = () => {
+  const { register, handleSubmit} = useForm();
+  const auth = useAuth()
+  const user_id=auth.user;
+  const navigate=useNavigate()
+  const [infos, setInfos] = useState([]);
+  const url = `https://petfinder.herokuapp.com/profile/${user_id}`;
 
    const Logout = async () => {
     try {
-      await axios.get("/user/logout", {
+      await axios.get("https://petfinder.herokuapp.com/logout", {
         headers: {
           "ngrok-skip-browser-warning": "69420",
         },
@@ -25,9 +29,9 @@ const ProfilePageLayout = () => {
   }
 
     useEffect(() => {
-    const getInfos = async () => {
+      const getInfos = async () => {
         try {
-          const response = await axios.get(`/user/profile`, {
+          const response = await axios.get(url, {
             headers: {
               "ngrok-skip-browser-warning": "69420",
             },
@@ -44,19 +48,34 @@ const ProfilePageLayout = () => {
       }
     }
     getInfos() 
-    }, []);
+    });
+    
+    const onSubmit = async (data) => {
+      console.log(data);
+      try {
+        const response = await axios.post(
+          "https://petfinder.herokuapp.com/insertProfileInfos",
+          { ...data },
+          {
+            headers: {
+              "ngrok-skip-browser-warning": "69420",
+            },
+          }
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
    return (     
     <div>
+      <NavLink to="/lost">
+            Home
+            </NavLink>
         <button onClick={Logout} type="button">
             Logout
         </button>
-
-        <div>
-          HELLO {infos.username} !
-        </div>
-
-      <h1 >POSTS</h1>
       <div >
         {infos.map((msg) => (
           <div>
@@ -65,9 +84,20 @@ const ProfilePageLayout = () => {
           </div>
         ))}
       </div>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <input type="name" placeholder="First Name"{...register("name")}/>
+            <input type="name" placeholder="Last Name" {...register("lastname")}/>
+            <input type="adress" placeholder="Adress" {...register("adress")}/>
+            <input type="name" placeholder="Phone" {...register("phone")}/>
+            <input type="email" placeholder="Email" {...register("email")}/>
+            <input type="number" placeholder="2" {...register("user_id")}/>
+            <button type="submit">Update</button>
+        </form>
+      </div>
     </div>
   )
 }
 
 
-export default ProfilePageLayout;
+export default ProfilePage;
