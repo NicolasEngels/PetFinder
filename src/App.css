@@ -1,10 +1,14 @@
 * BODY */ body {
     background-color: #F5F5F5;
+    height: 100vh;
+    width:100vw;
+    box-sizing: border-box;
 }
 
 /* HOMEPAGE */
 
 #home {
+    box-sizing: border-box;
     margin: auto;
     width: 75%;
     margin-top: 50px;
@@ -40,6 +44,7 @@ a {
 .find {
     background-color: #AEDB98;
     border-radius: 5px;
+    
 }
 
 .find:hover {
@@ -50,6 +55,7 @@ a {
 .lost {
     background-color: #C87F7F;
     border-radius: 5px;
+    
 }
 
 .lost:hover {
@@ -100,6 +106,7 @@ main {
 }
 /* LOST FIND PAGE */
 #LostFind{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,13 +114,19 @@ main {
 }
 
 h3 {
-    font-size: 25px;
     margin-block: 0em;
+    font-size: xx-large;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 10px;
+
 }
 .Lost {
+    padding-top: 10px;
     background-color: #C87F7F;
     width:280px;
-    height: 350px;
+    height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,49 +151,56 @@ h3 {
 }
 
 #barsearch{
-display: flex;
-justify-content: center;
-border-radius: 5px;
-border:1px solid black;
-box-shadow: inset 2px 2px 2px #777777;
-width:100%;
-height: 20px;
-text-align: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border:1px solid black;
+    box-shadow: inset 2px 2px 2px #777777;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+    width: 70%;
+    box-sizing: border-box;
 }
+
 .col {
     flex-direction: column;
 }
 
 .picture {
-    width :115px;
+   
     height: 115px;
-    background-color: #424141;
+    width:70%;
+    background-color:  #37485c;
     font-size: 18px;
     overflow: hidden;
     text-align: center;
     color: white;
-    padding: 5px;
     border-radius: 5px;
 }
 
-.description
-{
+.description {
+    width:70%;
     height: 70px;
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 5px;
-border:1px solid black;
-box-shadow: inset 2px 2px 2px #777777;
-text-align: center;
+    border:1px solid black;
+    box-shadow: inset 2px 2px 2px #777777;
+    text-align: center;
+    box-sizing: border-box;
+    
 }
 
 .animal {
     border-radius: 5px;
     border:1px solid black;
-    background-color: #424141;
-    border-radius: 5px;
-    color:white;
-    margin-right:3px ;
+    background-color: #ffffff;
+    color:rgb(0, 0, 0);
+    margin-bottom: 5px;
+    width: 70%;
+    text-align: center;
+    box-shadow: inset 2px 2px 2px #777777;
 
 }
 
@@ -202,8 +222,11 @@ text-align: center;
     background-color: #37485c;
     color: white;
     border-radius: 5px;
-    width: 80px;
-    padding: 2px;
+    width: 100px;
+    padding: 3px;
+    border:none;
+    margin-bottom: 20px;
+    
 }
 
 .submit:hover{
@@ -213,14 +236,42 @@ text-align: center;
 {
     height: 100%;
     width:100%;
+    box-sizing: border-box;
 }
-body{
+
+#root {
     height: 100vh;
-    width:100vw;
-}
-#root{height: 100vh;
     width:100vw;
  }
 
- .TOP{
+ .TOP {
     margin-top: 50px;}
+
+ .signup {
+    background-color: #C87F7F;
+    color: white;
+    border-radius: 5px;
+    width: 100px;
+    padding: 3px;
+    border:none;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+    }
+    
+.signup:hover{
+    background-color: #c34646;
+}
+
+.Find{
+    padding-top: 10px;
+    background-color: #AEDB98;
+    width:280px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
