@@ -2,6 +2,7 @@ import {useAuth} from '../Components/Auth'
 import {NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { useState} from "react"
+import "../Style.css"
 
 const LostPage = () => {
     const auth = useAuth()
@@ -11,10 +12,9 @@ const LostPage = () => {
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState('');
   const [location, setLocation] = useState('');
-  const [category_id, setCategoryId] = useState('');
   const [animal_id, setAnimalId] = useState('');
   const profile_id = user_id;
- 
+  const category_id = 4;
   
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -39,13 +39,39 @@ const LostPage = () => {
   };
     
 
-    return (
-      <div>
-      <NavLink to="/">
-            Home
-    </NavLink>
+  return (
+    <div className="lost">
+      <h3 >
+        LOST
+      </h3>
 
       <form onSubmit={onSubmit}>
+        <div className='flex justify-between'>
+         
+          <div>
+            <label>
+              Location:
+              <input
+                type="text"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </label>
+            <br />
+            <select value={animal_id} onChange={(e) => setAnimalId(e.target.value)}>
+              <option value="">Select an animal</option>
+              <option value="1">Cat</option>
+              <option value="2">Dog</option>
+              <option value="3">Other</option>
+            </select>
+          </div>
+
+          <label> 
+            Photo:
+            <input type="file" onChange={(e) => setPhoto(e.target.files[0])} />
+          </label> 
+        </div>
+
         <label>
           Description:
           <input
@@ -54,39 +80,6 @@ const LostPage = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
-        <br />
-        <label>
-          Location:
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Category:
-          <select value={category_id} onChange={(e) => setCategoryId(e.target.value)}>
-            <option value="">Select a category</option>
-            <option value="4">Lost</option>
-            <option value="5">Found</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          Animal:
-          <select value={animal_id} onChange={(e) => setAnimalId(e.target.value)}>
-            <option value="">Select an animal</option>
-            <option value="1">Cat</option>
-            <option value="2">Dog</option>
-            <option value="3">Other</option>
-          </select>
-        </label>
-        <br />
-        <label>
-  Photo:
-  <input type="file" onChange={(e) => setPhoto(e.target.files[0])} />
-</label>
 
         <button type="submit">Submit</button>
       </form>
