@@ -1,0 +1,17 @@
+h3 {
+
+    font-size: 25px;
+}
+.lost {
+    background-color: #C87F7F;
+    width:280px;
+    height: 280px;
+}
+.flex {
+    display: flex;
+
+}
+.justify-between{
+    justify-content: space-between;
+
+}
