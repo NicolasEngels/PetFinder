@@ -9,13 +9,14 @@ import FindPage from './Pages/FindPage';
 import LostPage from './Pages/LostPage';
 import HomePage from './Pages/Homepage';
 import PetPage from './Pages/PetPage';
+import "./App.css"
 
 
 const history = createBrowserHistory();
 
 const App = () => {
   return (
-    <div >
+    <div id='hey'>
       <AuthProvider>
         <BrowserRouter history={history}>
           <Routes>
