@@ -16,7 +16,7 @@ const history = createBrowserHistory();
 
 const App = () => {
   return (
-    <div id='hey'>
+    <div className='full'>
       <AuthProvider>
         <BrowserRouter history={history}>
           <Routes>
