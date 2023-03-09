@@ -32,9 +32,13 @@ const LostPage = () => {
         `https://petfinder.herokuapp.com/profile/${user_id}/insertPost`,
         {
           method: 'POST',
-          body: formData,
-        }
-      );
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+          formData
+        })
+      })
       console.log(response);
       navigate('/');
     } catch (error) {
@@ -71,7 +75,9 @@ const LostPage = () => {
             <label className="picture">
               <input
                 type="file"
-                onChange={(e) => setPhoto(e.target.files[0])}
+                onChange={(e) => 
+                  setPhoto(e.target.files[0])
+                }
               />
               Picture
             </label>
