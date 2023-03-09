@@ -1,4 +1,6 @@
-* BODY */ body {
+/* BODY */ 
+
+body {
     background-color: #F5F5F5;
 }
 
@@ -56,10 +58,10 @@ a {
 }
 
 #logo {
-    width: 200px;
+    width: 250px;
 }
 
-main {
+main, #profile {
     margin-top: 50px;
     background-color: #D9D9D9;
     border-radius: 5px;
@@ -95,4 +97,98 @@ main {
     height: 400px;
     margin-top: 50px;
     border-radius: 5px;
+}
+
+
+/* PROFILE */
+
+#action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 35px;
+    margin-bottom: 50px;
+}
+
+#logout,#navHome {
+    border: solid 2px transparent;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#homeLogo{
+    width: 30px;
+    margin: 5px 5px 0px 5px;
+}
+
+#logout{
+    font-size: 25px;
+    background-color: transparent;
+}
+
+#logout:hover, #navHome:hover {
+    border-bottom: solid 2px black;
+    transition: 0.6s;
+}
+
+#personnalInfo, #previous{
+    display: flex;
+    padding: 2%;
+}
+
+#pp{
+    border: solid 2px black;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-top: 7px;
+}
+
+#profileForm{
+    width: 75%;
+    margin: 5px auto;
+}
+
+#firstLine>input,
+#secondLine>input,
+#thirdLine>input,
+#fourthLine>input{
+    font-size: x-large;
+    background-color: transparent;
+    border: solid 2px transparent;
+    border-radius: 5px;
+    transition: .3s;
+    margin: 3px 6px;
+}
+
+#firstLine>input:hover,
+#secondLine>input:hover,
+#thirdLine>input:hover,
+#fourthLine>input:hover {
+    background-color: #F5F5F5;
+    transition: .3s;
+}
+
+#firstLine>input:focus,
+#secondLine>input:focus,
+#thirdLine>input:focus,
+#fourthLine>input:focus {
+    outline: none;
+}
+
+#update{
+    margin-top: 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: solid 2px transparent;
+    padding: 5px 10px;
+    background-color: #F5F5F5;
+    transition: .6s;
+    cursor: pointer;
+}
+
+#update:hover{
+    border: solid 2px #F5F5F5;
+    background-color: transparent;
+    transition: .6s;
 }

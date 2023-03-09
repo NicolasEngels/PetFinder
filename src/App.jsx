@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/signup" element={<SignUpPage/>}/>
             <Route path="/find" element={<RequireAuth><FindPage/></RequireAuth>}/> 
             <Route path="/lost" element={<RequireAuth><LostPage/></RequireAuth>}/> 
-            <Route path="/profile" element={<RequireAuth><ProfilePage/></RequireAuth>}/>
+            <Route path="/profile" element={<ProfilePage/>}/>
           </Routes>
         </BrowserRouter>
       </AuthProvider>

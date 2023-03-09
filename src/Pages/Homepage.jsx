@@ -23,7 +23,7 @@ function HomePage() {
                 </div>
 
                 <div id="map">
-
+                    <p>map</p>
                 </div>
 
                 <div id="posts">
