@@ -3,6 +3,9 @@ import {NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { useState, useEffect} from "react"
 import { useForm } from 'react-hook-form';
+import logo from "../Assets/chat-logo.png";
+import home from "../Assets/home.png";
+import defaultPP from "../Assets/defaultPP.jpg"
 
 const ProfilePage = () => {
   const { register, handleSubmit} = useForm();
@@ -69,32 +72,62 @@ const ProfilePage = () => {
     };
 
    return (     
-    <div>
-      <NavLink to="/lost">
-            Home
-            </NavLink>
-        <button onClick={Logout} type="button">
-            Logout
-        </button>
-      <div >
-        {infos.map((msg) => (
-          <div>
-            <button>-</button>
-             {msg.content}{" "}
-          </div>
-        ))}
-      </div>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="name" placeholder="First Name"{...register("name")}/>
-            <input type="name" placeholder="Last Name" {...register("lastname")}/>
-            <input type="adress" placeholder="Adress" {...register("adress")}/>
-            <input type="name" placeholder="Phone" {...register("phone")}/>
-            <input type="email" placeholder="Email" {...register("email")}/>
-            <input type="number" placeholder="2" {...register("user_id")}/>
-            <button type="submit">Update</button>
-        </form>
-      </div>
+    <div id='home'>
+        <div id='top'>
+           <img src={logo} alt="logo" id="logo"></img>
+        </div>
+
+        <div id='profile'>
+            <div id='action'>
+                <NavLink to="/" id='navHome'>
+                    <img src={home} alt="homeLogo" id="homeLogo"></img>
+                    Home
+                </NavLink>
+
+                <button onClick={Logout} type="button" id='logout'>
+                    Logout
+                </button>
+            </div>
+
+            <div >
+                {infos.map((msg) => (
+                <div>
+                    <button>-</button>
+                    {msg.content}{" "}
+                </div>
+                ))}
+            </div>
+
+            <div id='personnalInfo'>
+                <img src={defaultPP} alt="pp" id="pp"></img>
+
+                <form onSubmit={handleSubmit(onSubmit)} id="profileForm">
+                    <div id='firstLine'>
+                        <input type="name" placeholder="First Name"{...register("name")}/>
+                        <input type="name" placeholder="Last Name" {...register("lastname")}/>
+                    </div>
+
+                    <div id='secondLine'>
+                        <input type="adress" placeholder="Adress" {...register("adress")}/>
+                    </div>
+
+                    <div id='thirdLine'>
+                        <input type="name" placeholder="Phone" {...register("phone")}/>
+                        <input type="email" placeholder="Email" {...register("email")}/>
+                    </div>
+
+                    <div id='fourthLine'>
+                        <input type="number" placeholder="2" {...register("user_id")}/>
+                    </div>
+
+                    <button type="submit" id='update'>Update</button>
+                </form>
+            </div>
+
+            <div id='previous'>
+                <h2>old posts</h2>
+            </div>
+        </div>
     </div>
   )
 }
