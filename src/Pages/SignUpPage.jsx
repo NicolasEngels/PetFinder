@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import axios from "axios";
 import { useNavigate, useLocation } from 'react-router-dom';
+import {NavLink} from 'react-router-dom'
+import logo from "../Assets/chat-logo.png"
+
 
 function SignUp() {
   const navigate = useNavigate();
@@ -31,21 +34,24 @@ function SignUp() {
     } 
   
   return (
+       <div className="flex col align-center TOP">
+    <NavLink to="/" >
+      <img src={logo} alt="logo" id="logo"></img>
+    </NavLink>
 
-    <div > 
-       <form onSubmit={onSubmit}>
-          <h2>Sign Up</h2>
+       <form className="flex col justify-center align-center full" onSubmit={onSubmit}>
+          <h3>Sign Up</h3>
 
           <label htmlFor="typeText"></label>
-          <input ref={inputRefEmail} name="email"  type="email" placeholder="Enter your email" />
+          <input className="input" ref={inputRefEmail} name="email"  type="email" placeholder="Enter your email" />
                
           <label  htmlFor="typeText"></label>
-          <input ref={inputRefPassword} type="password" placeholder="Password" />
+          <input className="input" ref={inputRefPassword} type="password" placeholder="Password" />
                 
           <label htmlFor="typeText"></label>
-          <input ref={inputRefConfPassword} type="confirmpassword"  placeholder="confirm Password" />  
+          <input className="input" ref={inputRefConfPassword} type="confirmpassword"  placeholder="Confirm password" />  
             
-          <button type="submit" >Sign Up!</button>
+          <button className='submit' type="submit" >Sign Up!</button>
         </form>
     </div>
    
