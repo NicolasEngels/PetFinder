@@ -26,6 +26,10 @@ const LostPage = () => {
     formData.append('animal_id', animal_id);
     formData.append('profile_id', profile_id);
     console.log(formData);
+    const jsonData = {};
+    formData.forEach((value, key) => {
+      jsonData[key] = value;
+    });
 
     try {
       const response = await fetch(
@@ -35,16 +39,16 @@ const LostPage = () => {
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-          formData
+          credentials: 'include',
+          body: JSON.stringify(jsonData)
         })
-      })
       console.log(response);
       navigate('/');
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   return (
     <div id="LostFind">
@@ -73,7 +77,7 @@ const LostPage = () => {
               </select>
 
             <label className="picture">
-              <input
+              <input className='pictureinput'
                 type="file"
                 onChange={(e) => 
                   setPhoto(e.target.files[0])

@@ -26,7 +26,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #424141;
+    color: white
 }
 
 .button {
@@ -41,27 +41,31 @@ a {
     cursor: pointer;
     transition: .6s;
     margin-top: 40px;
+    color:white;
 }
 
 .find {
-    background-color: #AEDB98;
+    background-color: #4f7877;
     border-radius: 5px;
+    color:white;
+  
     
 }
 
 .find:hover {
-    background-color: #87d85f;
+    background-color: #1f4846;
     transition: .6s;
 }
 
 .lost {
-    background-color: #C87F7F;
+    background-color:#bfa5a6;
     border-radius: 5px;
+    color:white;
     
 }
 
 .lost:hover {
-    background-color: #c34646;
+    background-color: #574142;
     transition: .6s;
 }
 
@@ -199,7 +203,7 @@ main, #profile {
     border: solid 2px #F5F5F5;
     background-color: transparent;
     transition: .6s;
-=======
+}
 /* LOST FIND PAGE */
 #LostFind{
     box-sizing: border-box;
@@ -216,11 +220,12 @@ h3 {
     letter-spacing: 2px;
     text-align: center;
     margin-bottom: 10px;
+    color: white;
 
 }
 .Lost {
     padding-top: 10px;
-    background-color: #C87F7F;
+    background-color: #bfa5a6;
     width:280px;
     height: 320px;
     display: flex;
@@ -267,7 +272,7 @@ h3 {
    
     height: 115px;
     width:70%;
-    background-color:  #37485c;
+    background-color:  white;
     font-size: 18px;
     overflow: hidden;
     text-align: center;
@@ -344,7 +349,7 @@ h3 {
     margin-top: 50px;}
 
  .signup {
-    background-color: #C87F7F;
+    background-color: #bfa5a6;
     color: white;
     border-radius: 5px;
     width: 100px;
@@ -356,12 +361,12 @@ h3 {
     }
     
 .signup:hover{
-    background-color: #c34646;
+    background-color: #574142;
 }
 
 .Find{
     padding-top: 10px;
-    background-color: #AEDB98;
+    background-color: #4f7877;
     width:280px;
     height: 320px;
     display: flex;
@@ -370,4 +375,10 @@ h3 {
     justify-content: space-around;
     margin-bottom: 10px;
     border-radius: 5px;
+}
+
+.pictureinput{
+    display: flex;
+    justify-content: center;
+
 }
