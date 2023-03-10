@@ -1,4 +1,4 @@
-import axios from "axios"
+
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../Components/Auth';
 import { useNavigate,useLocation } from "react-router-dom";
@@ -14,19 +14,24 @@ function LoginPage () {
   const redirectPath = location.state?.path || '/'
   let navigate = useNavigate();
  
- const onSubmit = async (data = {}) => {
-  axios
-    .post("https://petfinder.herokuapp.com/login", data)
-    .then((response) => {
-      console.log(response);
-      const userId = response.data.id;
+  const onSubmit = async (data = {}) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: data.email, password: data.password }), 
+      credentials: 'include'
+    };
+    try {
+      const response = await fetch('https://petfinder.herokuapp.com/login', requestOptions);
+      const responseData = await response.json();
+      console.log(responseData);
+      const userId = responseData.id;
       localStorage.setItem("user_id", userId);
-      auth.login(response.data.id); // login the user
+      auth.login(responseData.id); // login the user
       navigate(redirectPath); // redirect to the requested page after login
-    })
-    .catch((error) => {
+    } catch (error) {
       console.log(error);
-    });
+    }
   };
 
   return (
