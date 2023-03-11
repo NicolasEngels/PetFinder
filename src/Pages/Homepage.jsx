@@ -5,6 +5,7 @@ import { LeafletContainer } from "../Components/maps/leaflet-container";
 import { LeafletMap } from "../Components/maps/leaflet-map";
 import { NavLink } from "react-router-dom";
 
+
 function HomePage() {
 const url= "https://petfinder.herokuapp.com/getAllPosts"
 const [infos, setInfos] = useState([]);
@@ -32,6 +33,7 @@ useEffect(() => {
   
   getInfos();
 }, []);
+
 
 
 return (

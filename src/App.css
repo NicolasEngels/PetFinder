@@ -42,6 +42,7 @@ a {
     cursor: pointer;
     transition: .6s;
     margin-top: 10px;
+
     color:white;
 }
 
@@ -50,6 +51,7 @@ a {
     border-radius: 5px;
     color:white;
     width: 100px;
+
   
     
 }
@@ -64,6 +66,7 @@ a {
     border-radius: 5px;
     color:white;
     width: 100px;
+
     
 }
 
@@ -282,7 +285,6 @@ h3 {
 }
 
 .picture {
-   
     height: auto;
     min-height: 150px;
     width:100%;
@@ -408,6 +410,7 @@ max-width: 200px;
     background-color: #4f7877;
     width:270px;
     height: 380px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -497,5 +500,4 @@ border-radius: 19px 0px 0px 0px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    
 }
