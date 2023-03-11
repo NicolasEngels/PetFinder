@@ -8,6 +8,7 @@ import ProfilePage from './Pages/ProfilePage';
 import FindPage from './Pages/FindPage';
 import LostPage from './Pages/LostPage';
 import HomePage from './Pages/Homepage';
+import HomePageList from './Pages/HomepageList';
 import PetPage from './Pages/PetPage';
 import "./App.css"
 
@@ -21,6 +22,7 @@ const App = () => {
         <BrowserRouter history={history}>
           <Routes>
             <Route path="/" element={<HomePage />}/>
+            <Route path="/list" element={<HomePageList />}/>
             <Route path="/pet" element={<PetPage />}/>
             <Route path="/login" element={<LoginPage />} /> 
             <Route path="/signup" element={<SignUpPage/>}/>

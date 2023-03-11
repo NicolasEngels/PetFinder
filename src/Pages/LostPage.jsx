@@ -1,8 +1,8 @@
 import { useAuth } from '../Components/Auth';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import '../Style.css';
-import logo from '../Assets/chat-logo.png';
+import logo from "../Assets/chat-logo.png";
+import { NavLink } from 'react-router-dom';
 
 const LostPage = () => {
   const auth = useAuth();
@@ -52,15 +52,16 @@ const LostPage = () => {
 
   return (
     <div id="LostFind">
-      <NavLink to="/">
-        <img src={logo} alt="logo" id="logo"></img>
-      </NavLink>
+      <NavLink to="/" >
+      <img src={logo} alt="logo" id="logo"></img>
+    </NavLink>
+         
       <div className="Lost">
         <h3 className="text-center">LOST</h3>
         <form className="flex justify-center align-center col" onSubmit={onSubmit}>
           <input
             id="barsearch"
-            placeholder="where is the pet ?"
+            placeholder="Where is the pet ?"
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
@@ -73,18 +74,30 @@ const LostPage = () => {
                 <option value="">Select an animal</option>
                 <option value="1">Cat</option>
                 <option value="2">Dog</option>
-                <option value="3">Other</option>
+                <option value="3">Others</option>
               </select>
 
-            <label className="picture">
-              <input className='pictureinput'
-                type="file"
-                onChange={(e) => 
-                  setPhoto(e.target.files[0])
-                }
-              />
-              Picture
-            </label>
+              <div className="picture">
+  {photo ? (
+  <img
+  src={URL.createObjectURL(photo)}
+  alt="Uploaded"
+  style={{ objectFit: "cover", height: "200px", borderRadius: "5px", 
+  width:"200px",
+  boxSizing: "border-box"  }}
+/>
+  ) : (
+    <>
+      Download a picture
+      <input
+        type="file"
+        onChange={(e) => setPhoto(e.target.files[0])}
+      />
+    </>
+  )}
+</div>
+
+
           <input
             type="text"
             value={description}
