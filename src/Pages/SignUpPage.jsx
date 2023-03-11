@@ -34,13 +34,13 @@ function SignUp() {
     } 
   
   return (
-       <div className="flex col align-center TOP">
+       <div className="flex col align-center ">
     <NavLink to="/" >
       <img src={logo} alt="logo" id="logo"></img>
     </NavLink>
 
-       <form className="flex col justify-center align-center full" onSubmit={onSubmit}>
-          <h3>Sign Up</h3>
+       <form className="flex col justify-center align-center" onSubmit={onSubmit}>
+          <h3 id="h3-red">Sign Up</h3>
 
           <label htmlFor="typeText"></label>
           <input className="input" ref={inputRefEmail} name="email"  type="email" placeholder="Enter your email" />
@@ -51,7 +51,7 @@ function SignUp() {
           <label htmlFor="typeText"></label>
           <input className="input" ref={inputRefConfPassword} type="confirmpassword"  placeholder="Confirm password" />  
             
-          <button className='submit' type="submit" >Sign Up!</button>
+          <button className='signup' type="submit" >Sign Up!</button>
         </form>
     </div>
    

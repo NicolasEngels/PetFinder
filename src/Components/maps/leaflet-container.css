@@ -1,0 +1,13 @@
+.leaflet-map {
+    height: 200px;
+    width:400px;
+   
+    padding: 0;
+    margin: 0;
+
+}
+
+.leaflet-container {
+    background-color: gray !important;
+  }
+

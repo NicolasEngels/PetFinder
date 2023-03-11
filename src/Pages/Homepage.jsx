@@ -1,37 +1,68 @@
 import logo from "../Assets/chat-logo.png"
+import { useEffect, useState } from "react";
+import cat from '../Assets/cat.png';
+import { LeafletContainer } from "../Components/maps/leaflet-container";
+import { LeafletMap } from "../Components/maps/leaflet-map";
+import { NavLink } from "react-router-dom";
 
 function HomePage() {
-    return (
-        <div id="home">
-            <div id="top">
-                <button className="button find"><a href="/find">FIND</a></button>
+const url= "https://petfinder.herokuapp.com/getAllPosts"
+const [infos, setInfos] = useState([]);
+const [buildings, setBuildings] = useState([]);
+useEffect(() => {
+  const getInfos = async () => {
+    try {
+        const response = await fetch(
+            url,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            }
+        );
+        const data = await response.json();
+        setInfos(data);
+        console.log(data)
+    } catch (error) {
+        console.log(error);
+    }
+  };
+  
+  getInfos();
+}, []);
 
-                <img src={logo} alt="logo" id="logo"></img>
 
-                <button className="button lost"><a href="/lost">LOST</a></button>
-            </div>
+return (
+  <div id="home">
+      <div id="top">
+          <button className="button find"><a href="/find">FIND</a></button>
 
-            <main>
-                <div id="search">
-                    <input type="text" id="location"/>
+          <img src={logo} alt="logo" id="logo"></img>
 
-                    <select name="sort" id="sort">
-                        <option value="">sort by</option>
-                        <option value="distance">distance</option>
-                        <option value="recent">recent</option>
-                    </select>
-                </div>
+          <button className="button lost"><a href="/lost">LOST</a></button>
+      </div>
 
-                <div id="map">
-                    <p>map</p>
-                </div>
+      <main>
+      <div id="search">
+              <input placeholder="Location" type="text" id="location"/>
 
-                <div id="posts">
+              <select name="sort" id="sort">
+                  <option value="">sort by</option>
+                  <option value="distance">distance</option>
+                  <option value="recent">recent</option>
+              </select>
+          </div>
+      <LeafletContainer>
+          <LeafletMap
+          buildings={buildings}/>
+        </LeafletContainer>
+        <NavLink className="a" to="/list">List</NavLink>
+      </main>
+  </div>
+);
 
-                </div>
-            </main>
-        </div>
-    )
 }
 
 export default HomePage;

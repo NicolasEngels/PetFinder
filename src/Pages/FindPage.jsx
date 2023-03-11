@@ -1,9 +1,9 @@
 
 import { useAuth } from '../Components/Auth';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import '../Style.css';
-import logo from '../Assets/chat-logo.png';
+import { NavLink } from 'react-router-dom';
+import logo from "../Assets/chat-logo.png";
 
 const FindPage = () => {
    
@@ -28,15 +28,22 @@ const FindPage = () => {
     formData.append('animal_id', animal_id);
     formData.append('profile_id', profile_id);
     console.log(formData);
+    const jsonData = {};
+    formData.forEach((value, key) => {
+      jsonData[key] = value;
+    });
 
     try {
       const response = await fetch(
         `https://petfinder.herokuapp.com/profile/${user_id}/insertPost`,
         {
           method: 'POST',
-          body: formData,
-        }
-      );
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+          body: JSON.stringify(jsonData)
+        })
       console.log(response);
       navigate('/');
     } catch (error) {
@@ -46,15 +53,15 @@ const FindPage = () => {
 
   return (
     <div id="LostFind">
-      <NavLink to="/">
-        <img src={logo} alt="logo" id="logo"></img>
-      </NavLink>
+       <NavLink to="/" >
+      <img src={logo} alt="logo" id="logo"></img>
+    </NavLink>
       <div className="Find">
         <h3 className="text-center">FIND</h3>
         <form className="flex justify-center align-center col" onSubmit={onSubmit}>
           <input
             id="barsearch"
-            placeholder="where is the pet ?"
+            placeholder="Where is the pet ?"
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
@@ -70,13 +77,25 @@ const FindPage = () => {
                 <option value="3">Other</option>
               </select>
 
-            <label className="picture">
-              <input
-                type="file"
-                onChange={(e) => setPhoto(e.target.files[0])}
-              />
-              Picture
-            </label>
+              <div className="picture">
+  {photo ? (
+   <img
+   src={URL.createObjectURL(photo)}
+   alt="Uploaded"
+   style={{ objectFit: "cover", height: "200px", borderRadius: "5px", 
+   width:"200px",
+   boxSizing: "border-box"  }}
+ />
+  ) : (
+    <>
+      Download a picture
+      <input
+        type="file"
+        onChange={(e) => setPhoto(e.target.files[0])}
+      />
+    </>
+  )}
+</div>
           <input
             type="text"
             value={description}
